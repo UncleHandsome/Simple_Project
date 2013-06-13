@@ -7,7 +7,7 @@ class reg {
             u32 ex;
         } gp;
     public:
-        reg(u8 value):gp.hl[0](value);
+        reg(u8 value);
         reg(u16);
         reg(u32);
         ~reg();
@@ -19,5 +19,14 @@ class reg {
         };
         inline u32 get_32() {
             return gp.ex;
+        };
+        inline void set_8(u8 value) {
+            gp.hl[0] = value;
+        };
+        inline void set_16(u16 value) {
+            gp.x[0] = value;
+        };
+        inline void set_32(u32 value) {
+            gp.ex = value;
         };
 };
