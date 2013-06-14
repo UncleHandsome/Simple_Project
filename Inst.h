@@ -6,26 +6,27 @@
 #include "CPU.h"
 //using namespace llvm;
 class Inst: public CPU {
-    virtual ~Inst() {};
-  //  virtual Value *Codegen() = 0;
+    public:
+        virtual ~Inst() {};
+        //  virtual Value *Codegen() = 0;
 };
-template <typename T>
 class add : public Inst {
     public:
-        virtual ~add() {};
-        inline T exec(const T a, const T b) {
-            T c = a + b;
-            if ((c >> ((sizeof(T) << 3) - 1)))
-                set_flag(OF);
-        };
+        template <typename T>
+            T exec(const T, const T); 
 };
-template <typename T>
 class sub : public Inst {
     public:
-        virtual ~sub() {};
-        inline T exec(const T a, const T b) {
-            T c = a + b;
-            if ((c >> ((sizeof(T) << 3) - 1)))
-                set_flag(OF);
-        };
+        template <typename T>
+            T exec(const T, const T);
+};
+class annd: public Inst {
+    public:
+        template <typename T>
+            T exec(const T, const T);
+};
+class cmp: public Inst {
+    public:
+            template <typename T>
+                T exec(const T, const T);
 };
