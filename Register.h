@@ -11,15 +11,6 @@ class Register {
         Register(const u16);
         Register(const u32);
         ~Register();
-        inline const u8 get_8() {
-            return gp.hl[0];
-        };
-        inline const u16 get_16() {
-            return gp.x[0];
-        };
-        inline const u32 get_32() {
-            return gp.ex;
-        };
         inline void set_8(const u8 value) {
             gp.hl[0] = value;
         };
@@ -29,4 +20,13 @@ class Register {
         inline void set_32(const u32 value) {
             gp.ex = value;
         };
+        inline u8 get_8() {
+            return gp.hl[0];
+        };
+        inline u16 get_16() {
+            return gp.x[0];
+        }
+        inline u32 get_32() {
+            return gp.ex;
+        }
 };
