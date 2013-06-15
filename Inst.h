@@ -4,6 +4,7 @@
 //#include <llvm/Module.h>
 #include "Core.h"
 #include "CPU.h"
+#include <cstdio>
 //using namespace llvm;
 class Inst: public CPU {
     public:
@@ -50,5 +51,7 @@ T And::exec(const T a, const T b)
 template <typename T>
 void Cmp::exec(const T a, const T b)
 {
-    return a - b;
+    T c = a - b;
+    if (c == 0)
+        CPU::set_flag(ZF);
 }

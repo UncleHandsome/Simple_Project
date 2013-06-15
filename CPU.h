@@ -24,7 +24,8 @@ class CPU {
         virtual ~CPU () {};
     private:
         static u32 eflags;
-        inline void set_flag(const flags& flag) {
+    protected:
+        inline void set_flag(u32 flag) {
             eflags |= flag;
         }
         inline void clear_flag(const flags& flag) {
