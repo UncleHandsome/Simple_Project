@@ -1,10 +1,10 @@
 #include "Core.h"
 class Memory {
     private:
-        char *memory;
+        u32 *memory;
     public:
         Memory() {
-            memory = new char[mm_size];
+            memory = new u32[mm_size];
         }
         inline void set_32(u32 addr, u32 value) {
             *(memory + addr) = value;

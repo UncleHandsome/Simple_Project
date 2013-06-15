@@ -48,7 +48,8 @@ int main(void)
 
     // call scanf
     addr = add.exec(esp.get_32(), (u32)0x14);
-    value = 10;
+    printf("Input below\n =>");
+    scanf("%u", &value);
     mem.set_32(addr, value);
     // call scanf
 
@@ -99,7 +100,7 @@ main_0x3c:
     // printf
     addr = add.exec(esp.get_32(), (u32)0x1c);
     value = mem.get_32(addr);
-    printf("%d\n", value);
+    printf("%u\n", value);
     // printf
 
     return 0;
