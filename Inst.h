@@ -10,23 +10,45 @@ class Inst: public CPU {
         virtual ~Inst() {};
         //  virtual Value *Codegen() = 0;
 };
-class add : public Inst {
+class Add : public Inst {
     public:
         template <typename T>
             T exec(const T, const T); 
 };
-class sub : public Inst {
+class Sub : public Inst {
     public:
         template <typename T>
             T exec(const T, const T);
 };
-class annd: public Inst {
+class And: public Inst {
     public:
         template <typename T>
             T exec(const T, const T);
 };
-class cmp: public Inst {
+class Cmp: public Inst {
     public:
             template <typename T>
-                T exec(const T, const T);
+                void exec(const T, const T);
 };
+template <typename T>
+T Add::exec(const T a, const T b)
+{
+    return a + b;
+}
+// OF, SF, ZF, AF, PF, CF
+template <typename T>
+T Sub::exec(const T a, const T b)
+{
+    return a - b;
+}
+template <typename T>
+T And::exec(const T a, const T b)
+{
+    return a & b;
+}
+// a - b
+template <typename T>
+void Cmp::exec(const T a, const T b)
+{
+    return a - b;
+}
