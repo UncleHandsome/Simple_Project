@@ -12,6 +12,7 @@ And annd;
 Cmp cmp;
 CPU cpu;
 u32 CPU::eflags = 0;
+
 int main(void)
 {
     u32 addr, value;
@@ -42,9 +43,8 @@ int main(void)
     value = eax.get_32();
     mem.set_32(addr, value);
 
-    addr = esp.get_32();
     value = 0x8048540;
-    mem.set_32(addr, value);
+    mem.set_32(esp.get_32(), value);
 
     // call scanf
     addr = add.exec(esp.get_32(), (u32)0x14);
@@ -65,8 +65,7 @@ again:
     eax.set_32(value);
 
     addr = add.exec(esp.get_32(), (u32)0x1c);
-    value = mem.get_32(addr);
-    value = add.exec(value, eax.get_32());
+    value = add.exec(mem.get_32(addr), eax.get_32());
     mem.set_32(addr, value);
 
     addr = add.exec(esp.get_32(), (u32)0x18);
@@ -100,7 +99,7 @@ main_0x3c:
     // printf
     addr = add.exec(esp.get_32(), (u32)0x1c);
     value = mem.get_32(addr);
-    printf("%u\n", value);
+    printf("Answer:%u\n", value);
     // printf
 
     return 0;
