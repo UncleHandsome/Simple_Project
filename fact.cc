@@ -48,7 +48,7 @@ int main(void)
 
     // call scanf
     addr = add.exec(esp.get_32(), (u32)0x14);
-    printf("Input below\n =>");
+    printf("Input below\n=>");
     scanf("%u", &value);
     mem.set_32(addr, value);
     // call scanf
