@@ -21,7 +21,7 @@ class CPU {
         inline bool get_flag(const flags& flag) {
             return eflags & flag;
         }
-        virtual ~CPU () {};
+        ~CPU () {};
     private:
         static u32 eflags;
     protected:

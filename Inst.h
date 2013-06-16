@@ -8,7 +8,7 @@
 //using namespace llvm;
 class Inst: public CPU {
     public:
-        virtual ~Inst() {};
+        ~Inst() {};
         //  virtual Value *Codegen() = 0;
 };
 class Add : public Inst {
