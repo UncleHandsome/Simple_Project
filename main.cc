@@ -20,7 +20,29 @@ OutputFilename("o", cl::desc("Output filename"), cl::value_desc("filename"));
 
 void addMainFunction(Module *mod)
 {
+    Function *main_func = cast<Function>(mod->
+            getOrInsertFunction("main", 
+                IntegerType::getInt32Ty(mod->getContext()),
+                IntegerType::getInt32Ty(mod->getContext()),
+                PointerType::getUnqual(PointerType::getUnqual(
+                        IntegerType::getInt8Ty(mod->getContext()))), 
+                NULL));
+    {
+        Function::arg_iterator args = main_func->arg_begin();
+        Value *arg_0 = args++;
+        arg_0->setName("argc");
+        Value *arg_1 = args++;
+        arg_1->setName("argv");
+    }
 
+    BasicBlock *bb = BasicBlock::Create(mod->getContext(), "main.0", main_func);
+
+    {
+
+    }
+
+    ReturnInst::Create(mod->getContext(), 
+            ConstantInt::get(mod->getContext(), APInt(32, 0)), bb);
 }
 
 int main(int argc, const char **argv)

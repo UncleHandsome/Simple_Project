@@ -4,8 +4,6 @@
 #include "llvm/IR/IRBuilder.h"
 #include "llvm/IR/LLVMContext.h"
 #include "llvm/IR/Module.h"
-
-
 using namespace llvm;
 
 class x86toArm {
@@ -17,7 +15,7 @@ class x86toArm {
         And annd;
         Cmp cmp;
         Memory mem;
-        Register eax, ebx, ecx, edx, esp, ebp;
+        Register eax, ebx, ecx, edx, esp, ebp, eip;
 
         void header(LLVMContext& C);
 

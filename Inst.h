@@ -1,4 +1,3 @@
-#include "Core.h"
 #include "CPU.h"
 #include <cstdio>
 #include "llvm/Analysis/Verifier.h"
@@ -12,8 +11,9 @@
 #include "llvm/IR/Module.h"
 #include "llvm/Support/TargetSelect.h"
 #include "llvm/Support/raw_ostream.h"
-
 using namespace llvm;
+
+
 class Inst: public CPU {
     public:
         ~Inst() {};
@@ -67,15 +67,4 @@ void Cmp::exec(const T a, const T b)
         set_flag(CPU::ZF);
 }
 
-Value *Add::Codegen()
-{
-}
-Value *Sub::Codegen()
-{
-}
-Value *And::Codegen()
-{
-}
-Value *Cmp::Codegen()
-{
-}
+
