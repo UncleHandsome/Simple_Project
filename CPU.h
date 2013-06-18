@@ -25,7 +25,7 @@ class CPU {
     private:
         static u32 eflags;
     protected:
-        inline void set_flag(u32 flag) {
+        inline void set_flag(const flags flag) {
             eflags |= flag;
         }
         inline void clear_flag(const flags& flag) {
